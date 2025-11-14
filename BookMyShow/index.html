@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BookMyShow</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="icon-top.jpeg" type="image/x-icon">
+    <style>
+      .d-flex::-webkit-scrollbar {
+        display: none;
+      }
+      .carousel-item {
+        height: 700px;
+      }
+      .carousel-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top; /* essential */
+      }
+
+      @media (max-width: 768px) {
+        .carousel-item img {
+          height: 300px; /* smaller height for mobile */
+        }
+      }
+      .shadow-hover {
+        transition: filter 0.3s ease;
+      }
+
+      .shadow-hover:hover {
+        filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8));
+      }
+      .hover-effect:hover {
+        color: white !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="d-flex align-items-center justify-content-between w-100 px-3">
+      <nav class="navbar">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img
+              src="logo.png"
+              alt="Logo"
+              width="140"
+              height="36"
+              class="d-inline-block align-text-top"
+            />
+          </a>
+        </div>
+      </nav>
+      <!-- <nav class="navbar flex-grow-1 mx-3">
+        <div class="container-fluid w-100">
+          <form class="d-flex w-100" role="search">
+            <input
+              class="form-control me-2 w-100"
+              type="search"
+              placeholder="Search for Movies,Events,Plays,Sports and Activities"
+              aria-label="Search"
+            />
+          </form>
+        </div>
+      </nav> -->
+      <nav class="navbar flex-grow-1 mx-3">
+        <form class="d-flex w-100" role="search">
+          <input
+            class="form-control me-2 w-100"
+            type="search"
+            placeholder="Search for Movies,Events,Plays,Sports and Activities"
+            aria-label="Search"
+          />
+        </form>
+      </nav>
+      <div class="d-flex align-items-center gap-3">
+        <div class="dropdown">
+          <button
+            class="btn btn-secondary dropdown-toggle"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Location
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Tiruppur</a></li>
+            <li><a class="dropdown-item" href="#">Coimbatore</a></li>
+            <li><a class="dropdown-item" href="#">Chennai</a></li>
+          </ul>
+        </div>
+        <button type="button" class="btn btn-danger">Sign In</button>
+        <i class="bi bi-list fs-3"></i>
+      </div>
+    </div>
+    <div class="d-flex justify-content-between bg-body-tertiary px-3">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active fs-5" aria-current="page" href="#"
+                  >Movies</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-5" href="#">Stream</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-5" href="#">Events</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-5" href="#">Plays</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-5" href="#">Sports</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-5" href="#">Activities</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active fs-5" aria-current="page" href="#"
+                  >Movies</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-5" href="#">Stream</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-5" href="#">Events</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-5" href="#">Plays</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div
+      id="carouselExampleAutoplaying"
+      class="carousel slide"
+      data-bs-ride="carousel"
+      data-bs-interval="2500"
+    >
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+        ></button>
+      </div>
+      <div class="carousel-inner px-3">
+        <div class="carousel-item active">
+          <img
+            src="carousels/carousel-1.jpeg"
+            class="d-block img-fluid"
+            alt=".carousel-1"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="carousels/carousel-2.jpeg"
+            class="d-block img-fluid"
+            alt="carousel-2"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="carousels/carousel-3.jpeg"
+            class="d-block img-fluid"
+            alt="carousel-3"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="carousels/carousel-4.jpeg"
+            class="d-block img-fluid"
+            alt="carousel-4"
+          />
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleAutoplaying"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleAutoplaying"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <h3 class="fw-bold fs-4 mt-5 mb-0 px-3">Recommended Movies</h3>
+    <div
+      class="d-flex overflow-auto align-items-center justify-content-evenly mt-3 gap-4 px-3"
+      style="scrollbar-width: none; -ms-overflow-style: none"
+    >
+      <div class="card border-0" style="min-width: 18rem">
+        <img
+          src="cards/card-1.jpeg"
+          class="card-img-top w-100"
+          alt="card-1"
+          style="height: 400px; object-fit: cover"
+        />
+        <div class="card-body text-center">
+          <h5 class="card-title mb-2">Aaryan</h5>
+          <p class="card-text mb-0">Crime/Thriller</p>
+        </div>
+      </div>
+      <div class="card border-0" style="min-width: 18rem">
+        <img
+          src="cards/card-2.jpeg"
+          class="card-img-top w-100"
+          alt="card-2"
+          style="height: 400px; object-fit: cover; object-position: top"
+        />
+        <div class="card-body text-center">
+          <h5 class="card-title mb-2">Drishyam</h5>
+          <p class="card-text mb-0">Adventure/Comedy</p>
+        </div>
+      </div>
+      <div class="card border-0" style="min-width: 18rem">
+        <img
+          src="cards/card-3.jpeg"
+          class="card-img-top w-100"
+          alt="card-3"
+          style="height: 400px; object-fit: cover; object-position: top"
+        />
+        <div class="card-body text-center">
+          <h5 class="card-title mb-2">Hera Pheri</h5>
+          <p class="card-text mb-0">Action/Drama/Fantasy</p>
+        </div>
+      </div>
+      <div class="card border-0" style="min-width: 18rem">
+        <img
+          src="cards/card-4.jpeg"
+          class="card-img-top w-100"
+          alt="card-4"
+          style="height: 400px; object-fit: cover; object-position: top"
+        />
+        <div class="card-body text-center">
+          <h5 class="card-title mb-2">Gangs of Wasseypur</h5>
+          <p class="card-text mb-0">Action/Crime/Drama</p>
+        </div>
+      </div>
+      <div class="card border-0" style="min-width: 18rem">
+        <img
+          src="cards/card-5.jpeg"
+          class="card-img-top w-100"
+          alt="card-5"
+          style="height: 400px; object-fit: cover; object-position: top"
+        />
+        <div class="card-body text-center">
+          <h5 class="card-title mb-2">Rang De Basanti</h5>
+          <p class="card-text mb-0">Comedy/Drama</p>
+        </div>
+      </div>
+      <div class="card border-0" style="min-width: 18rem">
+        <img
+          src="cards/card-6.jpeg"
+          class="card-img-top w-100"
+          alt="card-6"
+          style="height: 400px; object-fit: cover; object-position: top"
+        />
+        <div class="card-body text-center">
+          <h5 class="card-title mb-2">Zindagi Na Milegi Dobara</h5>
+          <p class="card-text mb-0">Adventure/Drama/Thriller</p>
+        </div>
+      </div>
+      <div class="card border-0" style="min-width: 18rem">
+        <img
+          src="cards/card-1.jpeg"
+          class="card-img-top w-100"
+          alt="card-7"
+          style="height: 400px; object-fit: cover"
+        />
+        <div class="card-body text-center">
+          <h5 class="card-title mb-2">Aaryan</h5>
+          <p class="card-text mb-0">Crime/Thriller</p>
+        </div>
+      </div>
+      <div class="card border-0" style="min-width: 18rem">
+        <img
+          src="cards/card-2.jpeg"
+          class="card-img-top w-100"
+          alt="card-8"
+          style="height: 400px; object-fit: cover; object-position: top"
+        />
+        <div class="card-body text-center">
+          <h5 class="card-title mb-2">Drishyam</h5>
+          <p class="card-text mb-0">Adventure/Comedy</p>
+        </div>
+      </div>
+      <div class="card border-0" style="min-width: 18rem">
+        <img
+          src="cards/card-3.jpeg"
+          class="card-img-top w-100"
+          alt="card-9"
+          style="height: 400px; object-fit: cover; object-position: top"
+        />
+        <div class="card-body text-center">
+          <h5 class="card-title mb-2">Hera Pheri</h5>
+          <p class="card-text mb-0">Action/Drama/Fantasy</p>
+        </div>
+      </div>
+      <div class="card border-0" style="min-width: 18rem">
+        <img
+          src="cards/card-4.jpeg"
+          class="card-img-top w-100"
+          alt="card-10"
+          style="height: 400px; object-fit: cover; object-position: top"
+        />
+        <div class="card-body text-center">
+          <h5 class="card-title mb-2">Gangs of Wasseypur</h5>
+          <p class="card-text mb-0">Action/Crime/Drama</p>
+        </div>
+      </div>
+      <div class="card border-0" style="min-width: 18rem">
+        <img
+          src="cards/card-5.jpeg"
+          class="card-img-top w-100"
+          alt="card-11"
+          style="height: 400px; object-fit: cover; object-position: top"
+        />
+        <div class="card-body text-center">
+          <h5 class="card-title mb-2">Rang De Basanti</h5>
+          <p class="card-text mb-0">Comedy/Drama</p>
+        </div>
+      </div>
+      <div class="card border-0" style="min-width: 18rem">
+        <img
+          src="cards/card-6.jpeg"
+          class="card-img-top w-100"
+          alt="card-12"
+          style="height: 400px; object-fit: cover; object-position: top"
+        />
+        <div class="card-body text-center">
+          <h5 class="card-title mb-2">Zindagi Na Milegi Dobara</h5>
+          <p class="card-text mb-0">Adventure/Drama/Thriller</p>
+        </div>
+      </div>
+    </div>
+    <nav class="navbar flex-grow-1 mt-4">
+      <a class="navbar-brand w-100" href="#">
+        <img
+          src="banner.avif"
+          alt="Logo"
+          width="100%"
+          height="110"
+          class="d-inline-block align-text-top"
+        />
+      </a>
+    </nav>
+    <h3 class="fw-bold fs-4 mt-5 mb-0 px-3">The Best of Live Events</h3>
+    <div
+      class="d-flex overflow-auto align-items-center justify-content-evenly mt-3 gap-4 px-3"
+      style="scrollbar-width: none; -ms-overflow-style: none"
+    >
+      <div class="card border-0" style="min-width: 18rem">
+        <img
+          src="live/live-1.jpeg"
+          class="card-img-top w-100"
+          alt="live-1"
+          style="height: 300px; object-fit: cover"
+        />
+      </div>
+      <div class="card border-0" style="min-width: 18rem">
+        <img
+          src="live/live-2.jpeg"
+          class="card-img-top w-100"
+          alt="live-2"
+          style="height: 300px; object-fit: cover; object-position: top"
+        />
+      </div>
+      <div class="card border-0" style="min-width: 18rem">
+        <img
+          src="live/live-3.jpeg"
+          class="card-img-top w-100"
+          alt="live-3"
+          style="height: 300px; object-fit: cover; object-position: top"
+        />
+      </div>
+      <div class="card border-0" style="min-width: 18rem">
+        <img
+          src="live/live-4.jpeg"
+          class="card-img-top w-100"
+          alt="live-4"
+          style="height: 300px; object-fit: cover; object-position: top"
+        />
+      </div>
+      <div class="card border-0" style="min-width: 18rem">
+        <img
+          src="live/live-5.jpeg"
+          class="card-img-top w-100"
+          alt="live-5"
+          style="height: 300px; object-fit: cover; object-position: top"
+        />
+      </div>
+      <div class="card border-0" style="min-width: 18rem">
+        <img
+          src="live/live-1.jpeg"
+          class="card-img-top w-100"
+          alt="live-6"
+          style="height: 300px; object-fit: cover"
+        />
+      </div>
+      <div class="card border-0" style="min-width: 18rem">
+        <img
+          src="live/live-2.jpeg"
+          class="card-img-top w-100"
+          alt="live-7"
+          style="height: 300px; object-fit: cover; object-position: top"
+        />
+      </div>
+      <div class="card border-0" style="min-width: 18rem">
+        <img
+          src="live/live-3.jpeg"
+          class="card-img-top w-100"
+          alt="live-8"
+          style="height: 300px; object-fit: cover; object-position: top"
+        />
+      </div>
+      <div class="card border-0" style="min-width: 18rem">
+        <img
+          src="live/live-4.jpeg"
+          class="card-img-top w-100"
+          alt="live-9"
+          style="height: 300px; object-fit: cover; object-position: top"
+        />
+      </div>
+      <div class="card border-0" style="min-width: 18rem">
+        <img
+          src="live/live-5.jpeg"
+          class="card-img-top w-100"
+          alt="live-10"
+          style="height: 300px; object-fit: cover; object-position: top"
+        />
+      </div>
+    </div>
+    <h3 class="fw-bold fs-4 mt-5 mb-0 px-3">Your Music Studio</h3>
+    <div
+      class="d-flex overflow-auto align-items-center justify-content-evenly mt-3 gap-4 px-3"
+      style="scrollbar-width: none; -ms-overflow-style: none"
+    >
+      <div class="card border-0" style="min-width: 18rem">
+        <img
+          src="music/music-1.jpeg"
+          class="card-img-top w-100"
+          alt="music-1"
+          style="height: 400px; object-fit: cover"
+        />
+        <div class="card-body text-center">
+          <h5 class="card-title mb-2">Tom Morello India Tour</h5>
+          <p class="card-text mb-0">Phoenix Marketcity</p>
+          <p class="card-text mb-0">Bengaluru</p>
+        </div>
+      </div>
+      <div class="card border-0" style="min-width: 18rem">
+        <img
+          src="music/music-2.jpeg"
+          class="card-img-top w-100"
+          alt="music-2"
+          style="height: 400px; object-fit: cover; object-position: top"
+        />
+        <div class="card-body text-center">
+          <h5 class="card-title mb-2">Tom Morello India Tour</h5>
+          <p class="card-text mb-0">Phoenix Marketcity</p>
+          <p class="card-text mb-0">Bengaluru</p>
+        </div>
+      </div>
+      <div class="card border-0" style="min-width: 18rem">
+        <img
+          src="music/music-3.jpeg"
+          class="card-img-top w-100"
+          alt="music-3"
+          style="height: 400px; object-fit: cover; object-position: top"
+        />
+        <div class="card-body text-center">
+          <h5 class="card-title mb-2">Tom Morello India Tour</h5>
+          <p class="card-text mb-0">Phoenix Marketcity</p>
+          <p class="card-text mb-0">Bengaluru</p>
+        </div>
+      </div>
+      <div class="card border-0" style="min-width: 18rem">
+        <img
+          src="music/music-4.jpeg"
+          class="card-img-top w-100"
+          alt="music-4"
+          style="height: 400px; object-fit: cover; object-position: top"
+        />
+        <div class="card-body text-center">
+          <h5 class="card-title mb-2">Tom Morello India Tour</h5>
+          <p class="card-text mb-0">Phoenix Marketcity</p>
+          <p class="card-text mb-0">Bengaluru</p>
+        </div>
+      </div>
+      <div class="card border-0" style="min-width: 18rem">
+        <img
+          src="music/music-5.jpeg"
+          class="card-img-top w-100"
+          alt="music-5"
+          style="height: 400px; object-fit: cover; object-position: top"
+        />
+        <div class="card-body text-center">
+          <h5 class="card-title mb-2">Tom Morello India Tour</h5>
+          <p class="card-text mb-0">Phoenix Marketcity</p>
+          <p class="card-text mb-0">Bengaluru</p>
+        </div>
+      </div>
+      <div class="card border-0" style="min-width: 18rem">
+        <img
+          src="music/music-1.jpeg"
+          class="card-img-top w-100"
+          alt="music-6"
+          style="height: 400px; object-fit: cover"
+        />
+        <div class="card-body text-center">
+          <h5 class="card-title mb-2">Tom Morello India Tour</h5>
+          <p class="card-text mb-0">Phoenix Marketcity</p>
+          <p class="card-text mb-0">Bengaluru</p>
+        </div>
+      </div>
+      <div class="card border-0" style="min-width: 18rem">
+        <img
+          src="music/music-2.jpeg"
+          class="card-img-top w-100"
+          alt="music-7"
+          style="height: 400px; object-fit: cover; object-position: top"
+        />
+        <div class="card-body text-center">
+          <h5 class="card-title mb-2">Tom Morello India Tour</h5>
+          <p class="card-text mb-0">Phoenix Marketcity</p>
+          <p class="card-text mb-0">Bengaluru</p>
+        </div>
+      </div>
+      <div class="card border-0" style="min-width: 18rem">
+        <img
+          src="music/music-3.jpeg"
+          class="card-img-top w-100"
+          alt="music-8"
+          style="height: 400px; object-fit: cover; object-position: top"
+        />
+        <div class="card-body text-center">
+          <h5 class="card-title mb-2">Tom Morello India Tour</h5>
+          <p class="card-text mb-0">Phoenix Marketcity</p>
+          <p class="card-text mb-0">Bengaluru</p>
+        </div>
+      </div>
+      <div class="card border-0" style="min-width: 18rem">
+        <img
+          src="music/music-4.jpeg"
+          class="card-img-top w-100"
+          alt="music-9"
+          style="height: 400px; object-fit: cover; object-position: top"
+        />
+        <div class="card-body text-center">
+          <h5 class="card-title mb-2">Tom Morello India Tour</h5>
+          <p class="card-text mb-0">Phoenix Marketcity</p>
+          <p class="card-text mb-0">Bengaluru</p>
+        </div>
+      </div>
+      <div class="card border-0" style="min-width: 18rem">
+        <img
+          src="music/music-5.jpeg"
+          class="card-img-top w-100"
+          alt="music-10"
+          style="height: 400px; object-fit: cover; object-position: top"
+        />
+        <div class="card-body text-center">
+          <h5 class="card-title mb-2">Tom Morello India Tour</h5>
+          <p class="card-text mb-0">Phoenix Marketcity</p>
+          <p class="card-text mb-0">Bengaluru</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h1 class="fw-bold fs-2 mt-5 mb-5 px-3">Trending Searches Right now!</h1>
+      <div class="row px-3">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
+          <a href="#" class="text-decoration-none">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title" style="color: rgb(236, 33, 151)">
+                  Others (2025)
+                </h5>
+                <p class="card-text fs-5">Movies</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
+          <a href="#" class="text-decoration-none">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title" style="color: rgb(236, 33, 151)">
+                  Nayakan
+                </h5>
+                <p class="card-text fs-5">Movies</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
+          <a href="#" class="text-decoration-none">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title" style="color: rgb(236, 33, 151)">
+                  Dies Irae
+                </h5>
+                <p class="card-text fs-5">Movies</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
+          <a href="#" class="text-decoration-none">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title" style="color: rgb(236, 33, 151)">
+                  Aaromaley
+                </h5>
+                <p class="card-text fs-5">Movies</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
+          <a href="#" class="text-decoration-none">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title" style="color: rgb(236, 33, 151)">
+                  Aan Paavam Pollathathu
+                </h5>
+                <p class="card-text fs-5">Movies</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
+          <a href="#" class="text-decoration-none">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title" style="color: rgb(236, 33, 151)">
+                  Dude
+                </h5>
+                <p class="card-text fs-5">Movies</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
+          <a href="#" class="text-decoration-none">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title" style="color: rgb(236, 33, 151)">
+                  Bison Kaalamaadan
+                </h5>
+                <p class="card-text fs-5">Movies</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
+          <a href="#" class="text-decoration-none">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title" style="color: rgb(236, 33, 151)">
+                  Jung Kook Exhibition
+                </h5>
+                <p class="card-text fs-5">Movies</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      class="d-flex align-items-center justify-content-evenly mt-5 bg-black p-2"
+    >
+      <nav class="navbar">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img
+              src="logo.png"
+              alt="Logo"
+              width="140"
+              height="36"
+              class="d-inline-block align-text-top"
+            />
+          </a>
+        </div>
+      </nav>
+      <p class="fs-5 text-white mt-0 mb-0 px-3">
+        Got a show,event,activity or a great experience?Partner with us & get
+        listed on BookMyShow!!
+      </p>
+      <button type="button" class="btn btn-danger">Contact Today!</button>
+    </div>
+    <div class="d-flex align-items-center justify-content-evenly bg-secondary">
+      <nav class="navbar">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img
+              src="footer/service.png"
+              alt="Logo"
+              width="180"
+              height="116"
+              class="d-inline-block align-text-top shadow-hover"
+            />
+          </a>
+        </div>
+      </nav>
+      <nav class="navbar">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img
+              src="footer/cash.png"
+              alt="Logo"
+              width="150"
+              height="116"
+              class="d-inline-block align-text-top shadow-hover"
+            />
+          </a>
+        </div>
+      </nav>
+      <nav class="navbar">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img
+              src="footer/Newsletter.png"
+              alt="Logo"
+              width="120"
+              height="86"
+              class="d-inline-block align-text-top shadow-hover"
+            />
+          </a>
+        </div>
+      </nav>
+    </div>
+    <div style="background-color: rgba(24, 24, 25, 0.89)" class="p-4">
+      <div>
+        <p class="text-secondary fs-6 mb-2">MOVIES NOW SHOWING IN CHENNAI</p>
+        <div class="mb-3">
+          <a href="#" class="text-secondary fs-6 text-decoration-none"
+            >Aan Paavam Pollathathu |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Predator:Badlands |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Aaromaley |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Bison Kaalamaadan |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Dies Irae |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Aaryan |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Dude |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Others (2025)</a
+          >
+        </div>
+      </div>
+      <div>
+        <p class="text-secondary fs-6 mb-2">UPCOMING MOVIES IN CHENNAI</p>
+        <div class="mb-3">
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Aan Paavam Pollathathu |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Predator:Badlands |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Aaromaley |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Bison Kaalamaadan |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Dies Irae |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Aaryan |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Dude |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Others (2025)</a
+          >
+        </div>
+      </div>
+      <div>
+        <p class="text-secondary fs-6 mb-2">MOVIES BY GENRE</p>
+        <div class="mb-3">
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Aan Paavam Pollathathu |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Predator:Badlands |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Aaromaley |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Bison Kaalamaadan |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Dies Irae |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Aaryan |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Dude |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Others (2025)</a
+          >
+        </div>
+      </div>
+      <div>
+        <p class="text-secondary fs-6 mb-2">MOVIES BY LANGUAGE</p>
+        <div class="mb-3">
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Aan Paavam Pollathathu |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Predator:Badlands |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Aaromaley |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Bison Kaalamaadan |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Dies Irae |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Aaryan |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Dude |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Others (2025)</a
+          >
+        </div>
+      </div>
+      <div>
+        <p class="text-secondary fs-6 mb-2">SPORTS EVENTS IN CHENNAI</p>
+        <div class="mb-3">
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Aan Paavam Pollathathu |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Predator:Badlands |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Aaromaley |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Bison Kaalamaadan |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Dies Irae |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Aaryan |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Dude |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Others (2025)</a
+          >
+        </div>
+      </div>
+      <div>
+        <p class="text-secondary fs-6 mb-2">EVENTS IN TOP CITIES</p>
+        <div class="mb-3">
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Aan Paavam Pollathathu |</a
+          >
+          <a href="#" class="text-secondary fs-6 text-decoration-none"
+            >Predator:Badlands |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Aaromaley |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Bison Kaalamaadan |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Dies Irae |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Aaryan |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Dude |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Others (2025)</a
+          >
+        </div>
+      </div>
+      <div>
+        <p class="text-secondary fs-6 mb-2">CINEMAS IN TOP CITIES</p>
+        <div class="mb-3">
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Aan Paavam Pollathathu |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Predator:Badlands |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Aaromaley |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Bison Kaalamaadan |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Dies Irae |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Aaryan |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Dude |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Others (2025)</a
+          >
+        </div>
+      </div>
+      <div>
+        <p class="text-secondary fs-6 mb-2">PLAYS IN TOP CITIES</p>
+        <div class="mb-3">
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Aan Paavam Pollathathu |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Predator:Badlands |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Aaromaley |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Bison Kaalamaadan |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Dies Irae |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Aaryan |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Dude |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Others (2025)</a
+          >
+        </div>
+      </div>
+      <div>
+        <p class="text-secondary fs-6 mb-2">ACTIVITIES IN TOP CITIES</p>
+        <div class="mb-3">
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Aan Paavam Pollathathu |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Predator:Badlands |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Aaromaley |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Bison Kaalamaadan |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Dies Irae |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Aaryan |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Dude |</a
+          >
+          <a
+            href="#"
+            class="text-secondary fs-6 text-decoration-none hover-effect"
+            >Others (2025)</a
+          >
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
